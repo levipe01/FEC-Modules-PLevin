@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrden04/FEC-Modules-JGKapp
+  - https://github.com/hrden04/FEC-Modules-Mboss
+  - https://github.com/hrden04/agcModulesJOxner
 
 ## Table of Contents
 
@@ -17,7 +16,9 @@
 
 ## Usage
 
-> Some usage instructions
+npm run react-dev
+npm run server-dev
+npm run seed-db
 
 ## Requirements
 
@@ -32,8 +33,9 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 From within the root directory:
 
-```sh
+
 npm install -g webpack
 npm install
-```
+
+
 
