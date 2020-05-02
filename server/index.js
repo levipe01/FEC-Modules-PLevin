@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-
+app.use(express.static('./client/dist'));
 
 app.get('/api/similar_products', (req, res) => {
   db.query('SELECT * FROM products')
