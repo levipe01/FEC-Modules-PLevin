@@ -1,18 +1,29 @@
 import React from 'react';
+import Gallery from './Gallery.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      test: [],
+      products: [],
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/api/similar_products')
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          products: data.rows,
+        });
+      })
+      .catch((err) => err);
+  }
 
   render() {
     return (
-      <h1 test={this.state.test}>Hello From App </h1>
+      <Gallery products={this.state.products}/>
     );
   }
 }
