@@ -24,8 +24,8 @@ class Gallery extends React.Component {
   }
 
   myArrow({ type, onClick }) {
-    const pointer = type === consts.PREV ? '<' : '>'
-    return <button className="carousel_button" onClick={onClick}>{pointer}</button>
+    const pointer = type === consts.PREV ? 'button-left' : 'button-right'
+    return <button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>
   }
 
   render() {
