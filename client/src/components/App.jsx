@@ -17,7 +17,6 @@ class App extends React.Component {
         this.setState({
           products: data.rows,
         });
-        console.log(this.state.products)
       })
       .catch((err) => err);
   }

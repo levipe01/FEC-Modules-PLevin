@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
 
@@ -9,7 +10,17 @@ class Gallery extends React.Component {
 
     this.state = {
     };
-    //this.myArrow = this.myArrow.bind(this);
+
+    this.breakPoints = [
+      { width: 1, itemsToShow: 1, itemsToScroll: 1 },
+      { width: 200, itemsToShow: 2, itemsToScroll: 2 },
+      { width: 400, itemsToShow: 3, itemsToScroll: 3 },
+      { width: 600, itemsToShow: 4, itemsToScroll: 4 },
+      { width: 800, itemsToShow: 5, itemsToScroll: 5 },
+      { width: 1000, itemsToShow: 6, itemsToScroll: 6 },
+      { width: 1200, itemsToShow: 7, itemsToScroll: 7 },
+      { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
+    ];
   }
 
   myArrow({ type, onClick }) {
@@ -19,11 +30,19 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]} pagination={false} transitionMs={900} renderArrow={this.myArrow}>
-        {this.props.products.map((item) => { return (<GalleryItem key={item.id} item={item} />); })}
+      <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
+        pagination={false} transitionMs={900} renderArrow={this.myArrow}
+        breakPoints={this.breakPoints}>
+        {this.props.products.map((item) => <GalleryItem key={item.id} item={item} />)}
       </Carousel>
     );
   }
 }
+
+Gallery.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.shape({
+    image_url: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 export default Gallery;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const GalleryItem = (props) => {
   return (
@@ -11,6 +12,12 @@ const GalleryItem = (props) => {
       </div>
     </div>
   );
+};
+
+GalleryItem.propTypes = {
+  item: PropTypes.arrayOf(PropTypes.shape({
+    image_url: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default GalleryItem;
