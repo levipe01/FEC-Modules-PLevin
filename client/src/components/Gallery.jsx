@@ -1,13 +1,29 @@
 import React from 'react';
-import Carousel from 'react-elastic-carousel';
+import Carousel, { consts } from 'react-elastic-carousel';
+import GalleryItem from './GalleryItem.jsx';
 
-const Gallery = (props) => {
-  let items = props.products
-  return (
-    <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]} pagination={false} transitionMs={900}>
-      {items.map(item => <div className="a-carousel-card" key={item.id}><img src={item.image_url}/><div>{item.name}</div><div className="price">${item.price}</div></div>)}
-    </Carousel>
-  );
-};
+
+class Gallery extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+    //this.myArrow = this.myArrow.bind(this);
+  }
+
+  myArrow({ type, onClick }) {
+    const pointer = type === consts.PREV ? '<' : '>'
+    return <button className="carousel_button" onClick={onClick}>{pointer}</button>
+  }
+
+  render() {
+    return (
+      <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]} pagination={false} transitionMs={900} renderArrow={this.myArrow}>
+        {this.props.products.map((item) => { return (<GalleryItem key={item.id} item={item} />); })}
+      </Carousel>
+    );
+  }
+}
 
 export default Gallery;
