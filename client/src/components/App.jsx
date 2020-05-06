@@ -1,18 +1,28 @@
 import React from 'react';
+import Header from './Header.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      test: [],
+      currentPage: 2,
+      totalPages: 73,
     };
+
+    this.resetCarousel = this.resetCarousel.bind(this);
   }
 
+  resetCarousel() {
+    this.setState({
+      currentPage: 1,
+    });
+  }
 
   render() {
     return (
-      <h1 test={this.state.test}>Hello From App </h1>
+      <Header currentPage={this.state.currentPage}
+      resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
     );
   }
 }
