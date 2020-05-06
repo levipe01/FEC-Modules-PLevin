@@ -1,6 +1,8 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 
+const axios = require('axios').default;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,22 +11,21 @@ class App extends React.Component {
       products: [],
     };
 
-    this.fetchProducts = this.fetchProducts.bind(this);
+    this.getAllProducts = this.getAllProducts.bind(this);
   }
 
-  fetchProducts() {
-    fetch('http://localhost:3000/api/similar_products')
-      .then((response) => response.json())
-      .then((data) => {
+  getAllProducts() {
+    axios.get('http://localhost:3000/api/similar_products')
+      .then((response) => {
         this.setState({
-          products: data.rows,
+          products: response.data.rows,
         });
       })
       .catch((err) => err);
   }
 
   componentDidMount() {
-    this.fetchProducts();
+    this.getAllProducts();
   }
 
   render() {

@@ -17,9 +17,7 @@ const GalleryItem = (props) => (
 );
 
 GalleryItem.propTypes = {
-  item: PropTypes.arrayOf(PropTypes.shape({
-    image_url: PropTypes.string.isRequired,
-  })).isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default GalleryItem;

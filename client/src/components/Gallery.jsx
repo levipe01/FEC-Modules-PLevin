@@ -34,6 +34,8 @@ Gallery.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     image_url: PropTypes.string.isRequired,
   })).isRequired,
+  type: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default Gallery;
