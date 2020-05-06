@@ -8,9 +8,11 @@ class App extends React.Component {
     this.state = {
       products: [],
     };
+
+    this.fetchProducts = this.fetchProducts.bind(this);
   }
 
-  componentDidMount() {
+  fetchProducts() {
     fetch('http://localhost:3000/api/similar_products')
       .then((response) => response.json())
       .then((data) => {
@@ -19,6 +21,10 @@ class App extends React.Component {
         });
       })
       .catch((err) => err);
+  }
+
+  componentDidMount() {
+    this.fetchProducts();
   }
 
   render() {

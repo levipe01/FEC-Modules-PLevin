@@ -4,40 +4,31 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
 
 
-class Gallery extends React.Component {
-  constructor(props) {
-    super(props);
+const Gallery = (props) => {
+  const myArrow = ({ type, onClick }) => {
+    const pointer = type === consts.PREV ? 'button-left' : 'button-right';
+    return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
+  };
 
-    this.state = {
-    };
+  const breakPoints = [
+    { width: 1, itemsToShow: 1, itemsToScroll: 1 },
+    { width: 200, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 400, itemsToShow: 3, itemsToScroll: 3 },
+    { width: 600, itemsToShow: 4, itemsToScroll: 4 },
+    { width: 800, itemsToShow: 5, itemsToScroll: 5 },
+    { width: 1000, itemsToShow: 6, itemsToScroll: 6 },
+    { width: 1200, itemsToShow: 7, itemsToScroll: 7 },
+    { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
+  ];
 
-    this.breakPoints = [
-      { width: 1, itemsToShow: 1, itemsToScroll: 1 },
-      { width: 200, itemsToShow: 2, itemsToScroll: 2 },
-      { width: 400, itemsToShow: 3, itemsToScroll: 3 },
-      { width: 600, itemsToShow: 4, itemsToScroll: 4 },
-      { width: 800, itemsToShow: 5, itemsToScroll: 5 },
-      { width: 1000, itemsToShow: 6, itemsToScroll: 6 },
-      { width: 1200, itemsToShow: 7, itemsToScroll: 7 },
-      { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
-    ];
-  }
-
-  myArrow({ type, onClick }) {
-    const pointer = type === consts.PREV ? 'button-left' : 'button-right'
-    return <button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>
-  }
-
-  render() {
-    return (
-      <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
-        pagination={false} transitionMs={900} renderArrow={this.myArrow}
-        breakPoints={this.breakPoints}>
-        {this.props.products.map((item) => <GalleryItem key={item.id} item={item} />)}
-      </Carousel>
-    );
-  }
-}
+  return (
+    <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
+      pagination={false} transitionMs={900} renderArrow={myArrow}
+      breakPoints={breakPoints}>
+      {props.products.map((item) => <GalleryItem key={item.id} item={item} />)}
+    </Carousel>
+  );
+};
 
 Gallery.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
