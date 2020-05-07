@@ -4,7 +4,7 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
 
 
-const Gallery = ({ products }) => {
+const Gallery = ({ products, getTotalPages }) => {
   const myArrow = ({ type, onClick }) => {
     const pointer = type === consts.PREV ? 'button-left' : 'button-right';
     return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
@@ -21,10 +21,12 @@ const Gallery = ({ products }) => {
     { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
   ];
 
+  const handleResize = (currentBreakPoint) => getTotalPages(currentBreakPoint.itemsToShow)
+
   return (
     <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
       pagination={false} transitionMs={900} renderArrow={myArrow}
-      breakPoints={breakPoints}>
+      breakPoints={breakPoints} onResize={handleResize}>
       {products.map((item) => <GalleryItem key={item.id} item={item} />)}
     </Carousel>
   );
@@ -36,6 +38,7 @@ Gallery.propTypes = {
   })).isRequired,
   type: PropTypes.func,
   onClick: PropTypes.func,
+  getTotalPages: PropTypes.func,
 };
 
 export default Gallery;
