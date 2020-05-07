@@ -29,7 +29,7 @@ const Gallery = ({ products, getTotalPages, getCurrentPage }) => {
     <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
       pagination={false} transitionMs={900} renderArrow={myArrow}
       breakPoints={breakPoints} onResize={handleResize} onNextStart={handleNext}
-      onPrevStart={handleNext}>
+      onPrevStart={handleNext} >
       {products.map((item) => <GalleryItem key={item.id} item={item} />)}
     </Carousel>
   );

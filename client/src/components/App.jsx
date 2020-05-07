@@ -23,10 +23,8 @@ class App extends React.Component {
   }
 
   resetCarousel() {
-    this.setState({
-      currentPage: 1,
-      currentIndex: 0,
-    });
+    this.getAllProducts();
+    this.forceUpdate();
   }
 
   getCurrentPage(currentItem) {
