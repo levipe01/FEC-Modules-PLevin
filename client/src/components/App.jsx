@@ -1,15 +1,20 @@
 import React from 'react';
 import Footer from './Footer.jsx';
+import Gallery from './Gallery.jsx';
+
+const axios = require('axios').default;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      products: [],
       feedbackVisible: false,
     };
 
     this.toggleFeedback = this.toggleFeedback.bind(this);
+    this.getAllProducts = this.getAllProducts.bind(this);
   }
 
   toggleFeedback() {
@@ -19,9 +24,27 @@ class App extends React.Component {
     });
   }
 
+  getAllProducts() {
+    axios.get('http://localhost:3000/api/similar_products')
+      .then((response) => {
+        this.setState({
+          products: response.data.rows,
+        });
+      })
+      .catch((err) => err);
+  }
+
+  componentDidMount() {
+    this.getAllProducts();
+  }
+
   render() {
     return (
-      <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
+      <div>
+        <Gallery products={this.state.products}/>
+        <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
+      </div>
+
     );
   }
 }

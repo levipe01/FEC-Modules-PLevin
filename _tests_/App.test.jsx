@@ -5,10 +5,43 @@ import App from '../client/src/components/App.jsx';
 import Footer from '../client/src/components/Footer.jsx';
 
 
-describe('Unit Tests', () => {
-  test('should render the app component on the screen', () => {
+describe('App Unit Tests', () => {
+  jest.mock('axios', () => {
+    const tasks = [
+      {
+        id: '1000',
+        name: 'Digital Feed Synthesizing Interface',
+        product_url: 'http://norene.net',
+        image_url: 'http://lorempixel.com/640/480/technics',
+        is_prime: true,
+        price: '278.00',
+      },
+    ];
+
+    return {
+      get: jest.fn(() => Promise.resolve(tasks)),
+    };
+  });
+
+  test('should render the App Component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper).toExist();
+  });
+
+  test('should render Gallery Component', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('Gallery')).toHaveLength(1);
+  });
+
+  test('should invoke getAllProducts on componentDidMount', () => {
+    const wrapper = shallow(<App />);
+    const mock = jest.fn();
+    wrapper.instance().getAllProducts = mock;
+    wrapper.instance().forceUpdate();
+    wrapper
+      .instance()
+      .componentDidMount();
+    expect(mock).toHaveBeenCalled();
   });
 });
 
