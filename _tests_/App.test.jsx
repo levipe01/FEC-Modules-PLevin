@@ -1,13 +1,12 @@
 /* eslint-env jest */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import App from '../client/src/components/App.jsx';
-import Header from '../client/src/components/Header.jsx';
 
 
 describe('App Unit Tests', () => {
   jest.mock('axios', () => {
-    const tasks = [
+    const products = [
       {
         id: '1000',
         name: 'Digital Feed Synthesizing Interface',
@@ -19,7 +18,7 @@ describe('App Unit Tests', () => {
     ];
 
     return {
-      get: jest.fn(() => Promise.resolve(tasks)),
+      get: jest.fn(() => Promise.resolve(products)),
     };
   });
 
@@ -42,23 +41,5 @@ describe('App Unit Tests', () => {
       .instance()
       .componentDidMount();
     expect(mock).toHaveBeenCalled();
-  });
-});
-
-describe('Unit Interaction Tests', () => {
-  test('it should correctly update the state when resetCarouse is called', () => {
-    const wrapper = mount(<App />);
-    const mockSubmitHandler = () => {
-      wrapper.setState({ currentPage: 1 });
-    };
-    const header = shallow(
-      <Header
-        currentPage={2}
-        resetCarousel={mockSubmitHandler}
-        totalPages={10}
-      />,
-    );
-    header.find('.start-over').simulate('click');
-    expect(wrapper.instance().state.currentPage).toBe(1);
   });
 });

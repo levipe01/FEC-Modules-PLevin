@@ -16,6 +16,7 @@ class App extends React.Component {
       itemsPerPage: 0,
     };
 
+    this.child = React.createRef();
     this.resetCarousel = this.resetCarousel.bind(this);
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getTotalPages = this.getTotalPages.bind(this);
@@ -23,8 +24,11 @@ class App extends React.Component {
   }
 
   resetCarousel() {
-    this.getAllProducts();
-    this.forceUpdate();
+    this.child.current.goto();
+    this.setState({
+      currentPage: 1,
+      currentIndex: 0,
+    });
   }
 
   getCurrentPage(currentItem) {
@@ -64,7 +68,7 @@ class App extends React.Component {
         <Header currentPage={this.state.currentPage}
         resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
         <Gallery products={this.state.products} getTotalPages={this.getTotalPages}
-        getCurrentPage={this.getCurrentPage}/>
+        getCurrentPage={this.getCurrentPage} ref={this.child}/>
       </div>
 
     );
