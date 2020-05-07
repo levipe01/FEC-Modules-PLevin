@@ -4,7 +4,7 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
 
 
-const Gallery = ({ products }) => {
+const Gallery = ({ products, feedbackVisible }) => {
   const myArrow = ({ type, onClick }) => {
     const pointer = type === consts.PREV ? 'button-left' : 'button-right';
     return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
@@ -25,7 +25,8 @@ const Gallery = ({ products }) => {
     <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
       pagination={false} transitionMs={900} renderArrow={myArrow}
       breakPoints={breakPoints}>
-      {products.map((item) => <GalleryItem key={item.id} item={item} />)}
+      {products.map((item) => <GalleryItem key={item.id} item={item}
+      feedbackVisible={feedbackVisible}/>)}
     </Carousel>
   );
 };
@@ -36,6 +37,7 @@ Gallery.propTypes = {
   })).isRequired,
   type: PropTypes.func,
   onClick: PropTypes.func,
+  feedbackVisible: PropTypes.bool,
 };
 
 export default Gallery;

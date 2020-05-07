@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GalleryItem = ({ item }) => (
+const GalleryItem = ({ item, feedbackVisible }) => (
   <div className="a-carousel-card" key={item.id}>
+    {
+      feedbackVisible
+        ? <div className="carousel-feedback">Feedback</div>
+        : <div></div>
+    }
     <img src={item.image_url}/>
     <a href={item.product_url}>{item.name}</a>
     <div>
@@ -25,6 +30,7 @@ GalleryItem.propTypes = {
     is_prime: PropTypes.bool,
     price: PropTypes.string,
   }),
+  feedbackVisible: PropTypes.bool,
 };
 
 export default GalleryItem;

@@ -41,7 +41,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Gallery products={this.state.products}/>
+        <Gallery products={this.state.products} feedbackVisible={this.state.feedbackVisible}/>
         <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
       </div>
 

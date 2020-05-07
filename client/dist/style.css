@@ -155,4 +155,52 @@ img {
   margin-left: 11px;
 }
 
+.carousel-feedback {
+  position: absolute;
+  text-decoration: none;
+  padding: 0 19px 2px 0;
+  line-height: 11px;
+  margin: 0 0 0 2px;
+  display: inline-block;
+  background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right 0 no-repeat;
+  background-size: 15px;
+  color: #0066C0;
+  font-family: arial;
+  font-size: 11px;
+  text-align: right;
+
+    /* padding: 6px 2px;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    border-top: 1px solid #6daee1;
+    background-color: #f0f7fc;
+    background-color: rgba(240,247,252,.8);
+    border-bottom: 1px dotted #6daee1;
+    font-size: 12px; */
+}
+
+.carousel-feedback:hover {
+  text-decoration: none;
+  padding: 0 19px 2px 0;
+  line-height: 11px;
+  margin: 0 0 0 2px;
+  display: inline-block;
+  background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right -13px no-repeat;
+  background-size: 15px;
+  color:#c45500;
+  font-family: arial;
+  font-size: 11px;
+  text-align: right;
+
+  /* padding: 6px 2px;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  border-top: 1px solid #6daee1;
+  background-color: #f0f7fc;
+  background-color: rgba(240,247,252,.8);
+  border-bottom: 1px dotted #6daee1;
+  font-size: 12px; */
+}
 
