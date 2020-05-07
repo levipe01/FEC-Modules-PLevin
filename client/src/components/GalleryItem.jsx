@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GalleryItem = (props) => (
-  <div className="a-carousel-card" key={props.item.id}>
-    <img src={props.item.image_url}/>
-    <a href={props.item.product_url}>{props.item.name}</a>
+const GalleryItem = ({ item }) => (
+  <div className="a-carousel-card" key={item.id}>
+    <img src={item.image_url}/>
+    <a href={item.product_url}>{item.name}</a>
     <div>
-      <div className="price">${props.item.price}</div>
+      <div className="price">${item.price}</div>
       {
-        props.item.is_prime
+        item.is_prime
           ? <div className="prime_logo"></div>
           : <div></div>
       }
@@ -17,7 +17,14 @@ const GalleryItem = (props) => (
 );
 
 GalleryItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.shape({
+    image_url: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    product_url: PropTypes.string,
+    is_prime: PropTypes.bool,
+    price: PropTypes.string,
+  }),
 };
 
 export default GalleryItem;

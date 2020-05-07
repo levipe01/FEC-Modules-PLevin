@@ -4,7 +4,7 @@ import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
 
 
-const Gallery = (props) => {
+const Gallery = ({ products }) => {
   const myArrow = ({ type, onClick }) => {
     const pointer = type === consts.PREV ? 'button-left' : 'button-right';
     return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
@@ -25,7 +25,7 @@ const Gallery = (props) => {
     <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
       pagination={false} transitionMs={900} renderArrow={myArrow}
       breakPoints={breakPoints}>
-      {props.products.map((item) => <GalleryItem key={item.id} item={item} />)}
+      {products.map((item) => <GalleryItem key={item.id} item={item} />)}
     </Carousel>
   );
 };
