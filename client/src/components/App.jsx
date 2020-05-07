@@ -1,5 +1,8 @@
 import React from 'react';
 import Header from './Header.jsx';
+import Gallery from './Gallery.jsx';
+
+const axios = require('axios').default;
 
 class App extends React.Component {
   constructor(props) {
@@ -8,9 +11,11 @@ class App extends React.Component {
     this.state = {
       currentPage: 2,
       totalPages: 73,
+      products: [],
     };
 
     this.resetCarousel = this.resetCarousel.bind(this);
+    this.getAllProducts = this.getAllProducts.bind(this);
   }
 
   resetCarousel() {
@@ -19,10 +24,28 @@ class App extends React.Component {
     });
   }
 
+  getAllProducts() {
+    axios.get('http://localhost:3000/api/similar_products')
+      .then((response) => {
+        this.setState({
+          products: response.data.rows,
+        });
+      })
+      .catch((err) => err);
+  }
+
+  componentDidMount() {
+    this.getAllProducts();
+  }
+
   render() {
     return (
-      <Header currentPage={this.state.currentPage}
-      resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
+      <div>
+        <Header currentPage={this.state.currentPage}
+        resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
+        <Gallery products={this.state.products}/>
+      </div>
+
     );
   }
 }

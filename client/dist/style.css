@@ -8,7 +8,7 @@
   color: #C60!important;
   font-size: 16px!important;
   font-family: verdana,arial,helvetica,sans-serif!important;
-  display: inline-block;
+  float: left;
 }
 
 .header-right {
@@ -57,3 +57,134 @@
 .so-button:hover {
   color:#c45500
 }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  padding: 14px 18px 18px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+a {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0066c0;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#c45500;
+  outline:0;
+  text-decoration: underline;
+}
+
+#app {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+img {
+  height: 160px;
+  width: 160px;
+}
+
+.a-carousel-card {
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 19px;
+  color: #0066c0;
+  vertical-align: top;
+  text-align: left;
+  overflow: hidden;
+  margin-left: 16px;
+  margin-right: 16px;
+  width: 160px;
+  min-height: 100%;
+  list-style-type: none;
+  display: inline-block;
+  white-space: normal;
+  letter-spacing: normal
+}
+
+.price {
+  color: #B12704;
+  font-size: 17px;
+  line-height: 1.255;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  display: inline;
+}
+
+.prime_logo {
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-beacon_light_1x-addec3fd9da3908c382725310951d0252d2f72cd._V2_.png);
+  background-color: white;
+  background-position: left;
+  background-repeat: no-repeat;
+  -webkit-background-size: 512px 256px;
+  background-size: 512px 256px;
+  position: relative;
+  width: 42px;
+  height: 12px;
+  background-position: -154px -52px;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.carousel_button {
+  background: #e7e9ec;
+  border-radius: 3px;
+  border-color: #ADB1B8 #A2A6AC #8D9096;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 13px;
+  width: 40px;
+  height: 40px;
+  margin: 70px 0;
+}
+
+.carousel_button:focus {
+  outline:0;
+  border-color:#e77600;
+  box-shadow:0 0 3px 2px rgba(228,121,17,.5);
+}
+
+.carousel_button:active{
+  border-color:#adb1b8 #a2a6ac #a2a6ac;
+}
+
+.a-button:hover{
+  border-color:#a2a6ac #979aa1 #82858a;
+}
+
+.button-left {
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
+  -webkit-background-size: 400px 900px;
+  background-size: 400px 900px;
+  background-position: left;
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 15px;
+  background-position: -123px -7px;
+  margin-left: 11px;
+}
+
+.button-right {
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
+  -webkit-background-size: 400px 900px;
+  background-size: 400px 900px;
+  background-position: left;
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 15px;
+  background-position: -105px -7px;
+  margin-left: 11px;
+}
+
+
