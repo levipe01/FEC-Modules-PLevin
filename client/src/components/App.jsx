@@ -1,18 +1,36 @@
 import React from 'react';
+import Gallery from './Gallery.jsx';
+
+const axios = require('axios').default;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      test: [],
+      products: [],
     };
+
+    this.getAllProducts = this.getAllProducts.bind(this);
   }
 
+  getAllProducts() {
+    axios.get('http://localhost:3000/api/similar_products')
+      .then((response) => {
+        this.setState({
+          products: response.data.rows,
+        });
+      })
+      .catch((err) => err);
+  }
+
+  componentDidMount() {
+    this.getAllProducts();
+  }
 
   render() {
     return (
-      <h1 test={this.state.test}>Hello From App </h1>
+      <Gallery products={this.state.products}/>
     );
   }
 }

@@ -24,8 +24,8 @@ function titleCase(string) {
 
 function generateRandomProduct() {
   const randomProductUrl = faker.internet.url();
-  const randomImageUrl = faker.image.technics();
-  const randomProductName = titleCase(`${faker.hacker.adjective()} ${faker.hacker.noun()} ${faker.hacker.ingverb()} ${faker.hacker.noun()}`);
+  const randomImageUrl = `https://picsum.photos/600/400?random=${Math.floor(Math.random() * 1000)}`;
+  const randomProductName = titleCase(`${faker.commerce.productName()} - Made From ${faker.commerce.productMaterial()} (${titleCase(faker.commerce.color())}) - ${faker.commerce.department()}`);
   const randomIsPrime = Math.round(Math.random());
   const randomPrice = `${faker.commerce.price()}`;
 
