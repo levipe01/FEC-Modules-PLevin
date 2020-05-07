@@ -9,19 +9,31 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentPage: 2,
-      totalPages: 73,
+      currentIndex: 0,
+      currentPage: 1,
+      totalPages: 0,
       products: [],
+      itemsPerPage: 0,
     };
 
     this.resetCarousel = this.resetCarousel.bind(this);
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getTotalPages = this.getTotalPages.bind(this);
+    this.getCurrentPage = this.getCurrentPage.bind(this);
   }
 
   resetCarousel() {
     this.setState({
       currentPage: 1,
+      currentIndex: 0,
+    });
+  }
+
+  getCurrentPage(currentItem) {
+    const newCurrentPage = Math.ceil(currentItem.index / this.state.itemsPerPage) + 1;
+    this.setState({
+      currentIndex: currentItem.index,
+      currentPage: newCurrentPage,
     });
   }
 
@@ -29,6 +41,8 @@ class App extends React.Component {
     const newTotalPages = Math.ceil(this.state.products.length / itemsPerPage);
     this.setState({
       totalPages: newTotalPages,
+      itemsPerPage,
+      currentPage: Math.ceil(this.state.currentIndex / itemsPerPage) + 1,
     });
   }
 
@@ -51,7 +65,8 @@ class App extends React.Component {
       <div>
         <Header currentPage={this.state.currentPage}
         resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
-        <Gallery products={this.state.products} getTotalPages={this.getTotalPages}/>
+        <Gallery products={this.state.products} getTotalPages={this.getTotalPages}
+        getCurrentPage={this.getCurrentPage}/>
       </div>
 
     );
