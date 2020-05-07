@@ -1,0 +1,26 @@
+.feedbackButton {
+  text-decoration: none;
+  padding: 0 19px 2px 0;
+  line-height: 11px;
+  margin: 0 0 0 2px;
+  display: inline-block;
+  background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right 0 no-repeat;
+  background-size: 15px;
+  color: #0066C0;
+  font-family: arial;
+  font-size: 11px;
+  text-align: right;
+}
+
+.feedbackButton:hover {
+  background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right -13px no-repeat;
+  background-size: 15px;
+  color:#c45500;
+  outline:0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.feedbackWrapper {
+  float: right;
+}
