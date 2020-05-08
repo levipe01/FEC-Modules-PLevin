@@ -109,21 +109,29 @@ describe('Unit Interaction Tests', () => {
       },
     ];
     const wrapper = mount(<App />);
-    const mockSubmitHandler = () => {
+    const getTotalPages = () => {
       wrapper.setState({
         currentPage: 3,
         totalPages: 20,
         itemsPerPage: 5,
       });
     };
+
+    const mockHandleResize = () => {
+      getTotalPages(3);
+    };
+
     const wrapperGallery = mount(
       <Gallery
         products={products}
-        getTotalPages={mockSubmitHandler}
+        getTotalPages={getTotalPages}
         getCurrentPage={() => {}}
       />,
     );
-    wrapperGallery.find('.button-right').at(0).simulate('click');
+
+    wrapperGallery.instance().handleResize = mockHandleResize;
+    wrapperGallery.instance().handleResize();
+
     expect(wrapper.instance().state.currentPage).toBe(3);
     expect(wrapper.instance().state.totalPages).toBe(20);
     expect(wrapper.instance().state.itemsPerPage).toBe(5);
