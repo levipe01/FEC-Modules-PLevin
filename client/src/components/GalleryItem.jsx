@@ -5,7 +5,10 @@ const GalleryItem = ({ item, feedbackVisible }) => (
   <div className="a-carousel-card" key={item.id}>
     {
       feedbackVisible
-        ? <div className="carousel-feedback">Feedback</div>
+        ? <div className="carousel-feedback-wrapper">
+            <div className="carousel-feedback">Feedback</div>
+            <div className="carousel-feedback-img"></div>
+          </div>
         : <div></div>
     }
     <img src={item.image_url}/>

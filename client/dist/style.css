@@ -156,31 +156,24 @@ img {
 }
 
 .carousel-feedback {
+  cursor: pointer;
   position: absolute;
   text-decoration: none;
   padding: 0 19px 2px 0;
   line-height: 11px;
   margin: 0 0 0 2px;
-  display: inline-block;
   background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right 0 no-repeat;
   background-size: 15px;
   color: #0066C0;
   font-family: arial;
   font-size: 11px;
   text-align: right;
-
-    /* padding: 6px 2px;
-    top: 0;
-    left: 0;
-    text-decoration: none;
-    border-top: 1px solid #6daee1;
-    background-color: #f0f7fc;
-    background-color: rgba(240,247,252,.8);
-    border-bottom: 1px dotted #6daee1;
-    font-size: 12px; */
+  box-sizing: border-box;
+  width: auto;
 }
 
 .carousel-feedback:hover {
+  cursor: pointer;
   text-decoration: none;
   padding: 0 19px 2px 0;
   line-height: 11px;
@@ -192,8 +185,13 @@ img {
   font-family: arial;
   font-size: 11px;
   text-align: right;
+}
 
-  /* padding: 6px 2px;
+.carousel-feedback-wrapper {
+  /* position: absolute; */
+  width: inherit;
+  height: 12.5px;
+  padding: 6px 2px;
   top: 0;
   left: 0;
   text-decoration: none;
@@ -201,6 +199,7 @@ img {
   background-color: #f0f7fc;
   background-color: rgba(240,247,252,.8);
   border-bottom: 1px dotted #6daee1;
-  font-size: 12px; */
+  font-size: 12px;
+  opacity: 75%;
 }
 
