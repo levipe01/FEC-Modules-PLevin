@@ -36,9 +36,7 @@ class Gallery extends React.Component {
 
   handleNext(currentItem, nextItem) { this.props.getCurrentPage(nextItem); }
 
-  goto() {
-    this.carousel.goTo(Number(0));
-  }
+  goto() { this.carousel.goTo(Number(0)); }
 
   render() {
     return (
