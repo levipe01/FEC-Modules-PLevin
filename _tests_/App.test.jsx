@@ -46,7 +46,7 @@ describe('App Unit Tests', () => {
 });
 
 describe('Unit Interaction Tests', () => {
-  test('it should correctly update the state when resetCarouse is called', () => {
+  test('it should correctly update the state when resetCarousel is called', () => {
     const wrapper = mount(<App />);
     const mockSubmitHandler = () => {
       wrapper.setState({ feedbackVisible: true });
