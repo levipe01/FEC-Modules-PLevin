@@ -15,7 +15,9 @@ class App extends React.Component {
       totalPages: 0,
       products: [],
       feedbackVisible: false,
+      modalVisible: false,
       itemsPerPage: 0,
+      modalItem: {},
     };
 
     this.child = React.createRef();
@@ -24,6 +26,8 @@ class App extends React.Component {
     this.getTotalPages = this.getTotalPages.bind(this);
     this.getCurrentPage = this.getCurrentPage.bind(this);
     this.toggleFeedback = this.toggleFeedback.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.updateModalItem = this.updateModalItem.bind(this);
   }
 
   resetCarousel() {
@@ -58,6 +62,19 @@ class App extends React.Component {
     });
   }
 
+  toggleModal() {
+    const newState = !this.state.modalVisible;
+    this.setState({
+      modalVisible: newState,
+    });
+  }
+
+  updateModalItem(item) {
+    this.setState({
+      modalItem: item,
+    });
+  }
+
   getAllProducts() {
     axios.get('http://localhost:3000/api/similar_products')
       .then((response) => {
@@ -79,7 +96,9 @@ class App extends React.Component {
         resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
         <Gallery products={this.state.products} getTotalPages={this.getTotalPages}
         getCurrentPage={this.getCurrentPage} ref={this.child}
-        feedbackVisible={this.state.feedbackVisible}/>
+        feedbackVisible={this.state.feedbackVisible} modalVisible={this.state.modalVisible}
+        toggleModal={this.toggleModal} updateModalItem={this.updateModalItem}
+        modalItem={this.state.modalItem}/>
         <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
       </div>
 

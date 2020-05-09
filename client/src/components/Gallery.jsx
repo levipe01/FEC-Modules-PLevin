@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Carousel, { consts } from 'react-elastic-carousel';
 import GalleryItem from './GalleryItem.jsx';
+import FeedbackModal from './FeedbackModal.jsx';
 
 
 class Gallery extends React.Component {
@@ -40,13 +41,23 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
-        pagination={false} transitionMs={900} renderArrow={this.myArrow}
-        breakPoints={this.breakPoints} onResize={this.handleResize} onNextStart={this.handleNext}
-        onPrevStart={this.handleNext} ref={(ref) => { this.carousel = ref; }} >
-        {this.props.products.map((item) => <GalleryItem key={item.id} item={item}
-        feedbackVisible={this.props.feedbackVisible}/>)}
-      </Carousel>
+      <div className="gallery-wrapper">
+      {
+        this.props.modalVisible
+          ? <FeedbackModal toggleModal={this.props.toggleModal}
+          modalItem={this.props.modalItem}/>
+          : <></>
+      }
+        <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
+          pagination={false} transitionMs={900} renderArrow={this.myArrow}
+          breakPoints={this.breakPoints} onResize={this.handleResize} onNextStart={this.handleNext}
+          onPrevStart={this.handleNext} ref={(ref) => { this.carousel = ref; }} >
+          {this.props.products.map((item) => <GalleryItem key={item.id} item={item}
+          feedbackVisible={this.props.feedbackVisible} modalVisible={this.props.modalVisible}
+          products={this.props.products} toggleModal={this.props.toggleModal}
+          updateModalItem={this.props.updateModalItem}/>)}
+        </Carousel>
+      </div>
     );
   }
 }
@@ -60,6 +71,17 @@ Gallery.propTypes = {
   feedbackVisible: PropTypes.bool,
   getTotalPages: PropTypes.func,
   getCurrentPage: PropTypes.func,
+  modalVisible: PropTypes.bool,
+  toggleModal: PropTypes.func,
+  modalItem: PropTypes.shape({
+    image_url: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    product_url: PropTypes.string,
+    is_prime: PropTypes.bool,
+    price: PropTypes.string,
+  }),
+  updateModalItem: PropTypes.func,
 };
 
 export default Gallery;

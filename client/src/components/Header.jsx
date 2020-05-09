@@ -5,7 +5,7 @@ const Header = (props) => (
   <div className="header">
     <h2 className="header-left">Sponsored products related to this item</h2>
     <div className="header-right">
-<div className="page-nums">Page {props.currentPage} of {props.totalPages}</div>
+      <div className="page-nums">Page {props.currentPage} of {props.totalPages}</div>
       {
         props.currentPage > 1
         && <div className="start-over" onClick={props.resetCarousel}>
