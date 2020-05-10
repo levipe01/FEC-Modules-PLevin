@@ -69,7 +69,7 @@ class FeedbackModal extends React.Component {
           </form>
           <form className="fb-modal-comments" action="/action_page.php">
             <label className="fb-modal-bold" htmlFor="fname">Comments</label><br></br>
-            <textarea type="text" name="comments" onChange={this.handleInput} placeholder="Include additional details here"></textarea>
+            <textarea type="text" name="comments" className="fb-modal-textarea" onChange={this.handleInput} placeholder="Include additional details here"></textarea>
           </form>
 
           <div className="fb-modal-footer">

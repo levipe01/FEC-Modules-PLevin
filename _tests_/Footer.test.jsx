@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Footer from '../client/src/components/Footer.jsx';
 
 
-describe('Footer Unit Tests', () => {
+describe('Footer Render Tests', () => {
   test('should render the Footer Component', () => {
     const wrapper = shallow(<Footer
       feedbackVisible={true}

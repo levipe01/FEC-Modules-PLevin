@@ -18,9 +18,29 @@ describe('GalleryItem Unit Tests', () => {
     const wrapper = shallow(
       <GalleryItem
         item={sampleProduct}
+        products={[]}
       />,
     );
     expect(wrapper.find({ className: 'price' }).text()).toBe('$278.00');
     expect(wrapper.find({ href: 'http://norene.net' }).text()).toBe('Digital Feed Synthesizing Interface');
+  });
+
+  test('should invoke the updateModalItem & toggleModal prop when the feedback button is clicked', () => {
+    const mockToggleModal = jest.fn();
+    const mockUpdateModalItem = jest.fn();
+    const wrapper = shallow(
+      <GalleryItem
+        item={sampleProduct}
+        products={[]}
+        toggleModal={mockToggleModal}
+        updateModalItem={mockUpdateModalItem}
+        feedbackVisible={true}
+      />,
+    );
+    const updateButton = wrapper.find('.carousel-feedback-wrapper');
+    const event = { target: { id: '1000' } };
+    updateButton.simulate('click', event);
+    expect(mockToggleModal).toHaveBeenCalled();
+    expect(mockUpdateModalItem).toHaveBeenCalled();
   });
 });

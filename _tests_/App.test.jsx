@@ -45,6 +45,75 @@ describe('App Unit Tests', () => {
       .componentDidMount();
     expect(mock).toHaveBeenCalled();
   });
+
+  test('it should correctly update the state when resetCarousel is called', () => {
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().resetCarousel();
+    expect(wrapper.instance().state.currentIndex).toBe(0);
+    expect(wrapper.instance().state.currentPage).toBe(1);
+  });
+
+  test('it should correctly update the state when toggleFeedback is called', () => {
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().toggleFeedback();
+    expect(wrapper.instance().state.feedbackVisible).toBe(true);
+  });
+
+  test('it should correctly update the state when toggleModal is called', () => {
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().toggleModal();
+    expect(wrapper.instance().state.modalVisible).toBe(true);
+  });
+
+  test('it should correctly update the state when updateModalItem is called', () => {
+    const item = {
+      id: '1000',
+      name: 'Digital Feed Synthesizing Interface',
+      product_url: 'http://norene.net',
+      image_url: 'http://lorempixel.com/640/480/technics',
+      is_prime: true,
+      price: '278.00',
+    };
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().updateModalItem(item);
+    expect(wrapper.instance().state.modalItem).toBe(item);
+  });
+
+  test('it should correctly update the state when handleFeedback is called', () => {
+    const newFeedback = {
+      type_id: 2,
+      comments: 'I can\'t believe you would show this!!!',
+      prod_id: 1001,
+      user_name: 'levipe02',
+    };
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().handleFeedback(newFeedback);
+    expect(wrapper.instance().state.feedback).toBe(newFeedback);
+  });
+
+  test('it should correctly update the state when getTotalPages is called', () => {
+    const wrapper = mount(
+      <App />,
+    );
+
+    wrapper.instance().getTotalPages(5);
+    expect(wrapper.instance().state.itemsPerPage).toBe(5);
+  });
 });
 
 describe('Unit Interaction Tests', () => {
