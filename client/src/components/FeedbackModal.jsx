@@ -50,29 +50,33 @@ class FeedbackModal extends React.Component {
       <div className="fb-modal">
         <div className="fb-modal-content">
           <div className="fb-modal-header">
-            <h4>Share your feedback</h4>
+            <h4 className="fb-modal-bold">Share your feedback</h4>
           </div>
           <div className="fb-modal-main">
-            <img src={this.props.modalItem.image_url}/>
-            <div>{this.props.modalItem.name}</div>
-            <div>{this.props.modalItem.price}</div>
-            <form action="/action_page.php">
-              <p>This item is:</p>
-              <input type="radio" name="type_id" value="1" onClick={this.handleUpdate}></input>
-              <label htmlFor="Unrelated">Unrelated to what I&apos;m shopping for</label><br></br>
-              <input type="radio" name="type_id" value="2" onClick={this.handleUpdate}></input>
-              <label htmlFor="Inappropriate">Inappropriate or offensive</label><br></br>
-              <input type="radio" name="type_id" value="3" onClick={this.handleUpdate}></input>
-              <label htmlFor="other">Other</label>
-            </form>
-            <form action="/action_page.php">
-              <label htmlFor="fname">Comments:</label><br></br>
-              <textarea type="text" name="comments" onChange={this.handleInput}></textarea>
-            </form>
+            <img src={this.props.modalItem.image_url} className="fb-modal-image"/>
+            <div className="fb-modal-name">{this.props.modalItem.name}</div>
+            <div className="fb-modal-price">${this.props.modalItem.price}</div>
           </div>
+
+          <form className="fb-modal-type" action="/action_page.php">
+            <p className="fb-modal-bold">This item is:</p>
+            <input type="radio" name="type_id" value="1" onClick={this.handleUpdate}></input>
+            <label htmlFor="Unrelated"> Unrelated to what I&apos;m shopping for</label><br></br>
+            <input type="radio" name="type_id" value="2" onClick={this.handleUpdate}></input>
+            <label htmlFor="Inappropriate"> Inappropriate or offensive</label><br></br>
+            <input type="radio" name="type_id" value="3" onClick={this.handleUpdate}></input>
+            <label htmlFor="other"> Other</label>
+          </form>
+          <form className="fb-modal-comments" action="/action_page.php">
+            <label className="fb-modal-bold" htmlFor="fname">Comments</label><br></br>
+            <textarea type="text" name="comments" onChange={this.handleInput} placeholder="Include additional details here"></textarea>
+          </form>
+
           <div className="fb-modal-footer">
-            <button onClick={this.props.toggleModal}>Cancel</button>
-            <button onClick={this.handleSubmit}>Send feedback</button>
+            <div className="fb-modal-buttons">
+              <button className="fb-modal-cancel" onClick={this.props.toggleModal}>Cancel</button>
+              <button className="fb-modal-send" onClick={this.handleSubmit}>Send feedback</button>
+            </div>
           </div>
         </div>
       </div>

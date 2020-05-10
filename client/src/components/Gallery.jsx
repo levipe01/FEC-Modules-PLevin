@@ -12,12 +12,13 @@ class Gallery extends React.Component {
     this.breakPoints = [
       { width: 1, itemsToShow: 1, itemsToScroll: 1 },
       { width: 200, itemsToShow: 2, itemsToScroll: 2 },
-      { width: 400, itemsToShow: 3, itemsToScroll: 3 },
-      { width: 600, itemsToShow: 4, itemsToScroll: 4 },
-      { width: 800, itemsToShow: 5, itemsToScroll: 5 },
+      { width: 475, itemsToShow: 3, itemsToScroll: 3 },
+      { width: 650, itemsToShow: 4, itemsToScroll: 4 },
+      { width: 825, itemsToShow: 5, itemsToScroll: 5 },
       { width: 1000, itemsToShow: 6, itemsToScroll: 6 },
       { width: 1200, itemsToShow: 7, itemsToScroll: 7 },
       { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
+      { width: 1600, itemsToShow: 9, itemsToScroll: 9 },
     ];
     this.buttonLeft = 'button-left';
     this.buttonRight = 'button-right';
@@ -49,10 +50,11 @@ class Gallery extends React.Component {
           toggleFeedback={this.props.toggleFeedback}/>
           : <></>
       }
-        <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
-          pagination={false} transitionMs={900} renderArrow={this.myArrow}
-          breakPoints={this.breakPoints} onResize={this.handleResize} onNextStart={this.handleNext}
-          onPrevStart={this.handleNext} ref={(ref) => { this.carousel = ref; }} >
+        <Carousel itemsToScroll={8} itemsToShow={8} pagination={false} transitionMs={900}
+          renderArrow={this.myArrow} breakPoints={this.breakPoints} onResize={this.handleResize}
+          onNextStart={this.handleNext} onPrevStart={this.handleNext}
+          ref={(ref) => { this.carousel = ref; }}>
+
           {this.props.products.map((item) => <GalleryItem key={item.id} item={item}
           feedbackVisible={this.props.feedbackVisible} modalVisible={this.props.modalVisible}
           products={this.props.products} toggleModal={this.props.toggleModal}

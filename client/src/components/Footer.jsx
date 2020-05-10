@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Footer = (props) => (
+const Footer = ({ toggleFeedback, feedbackVisible }) => (
     <div className="feedbackWrapper">
       {
-        !props.feedbackVisible
-          ? <div className="feedbackButton" onClick={props.toggleFeedback}>Ad Feedback</div>
-          : <div className="feedbackButton" onClick={props.toggleFeedback}>Hide Feedback</div>
+        !feedbackVisible
+          ? <div className="feedbackButton" onClick={toggleFeedback}>Ad Feedback</div>
+          : <div className="feedbackButton" onClick={toggleFeedback}>Hide Feedback</div>
       }
     </div>
 );
