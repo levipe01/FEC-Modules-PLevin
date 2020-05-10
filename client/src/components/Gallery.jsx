@@ -45,7 +45,8 @@ class Gallery extends React.Component {
       {
         this.props.modalVisible
           ? <FeedbackModal toggleModal={this.props.toggleModal}
-          modalItem={this.props.modalItem}/>
+          modalItem={this.props.modalItem} handleFeedback={this.props.handleFeedback}
+          toggleFeedback={this.props.toggleFeedback}/>
           : <></>
       }
         <Carousel itemsToScroll={8} itemsToShow={8} itemPadding={[2, 2, 2, 2, 2]}
@@ -82,6 +83,8 @@ Gallery.propTypes = {
     price: PropTypes.string,
   }),
   updateModalItem: PropTypes.func,
+  handleFeedback: PropTypes.func,
+  toggleFeedback: PropTypes.func,
 };
 
 export default Gallery;

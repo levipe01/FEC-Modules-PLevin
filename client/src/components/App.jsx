@@ -18,6 +18,7 @@ class App extends React.Component {
       modalVisible: false,
       itemsPerPage: 0,
       modalItem: {},
+      feedback: {},
     };
 
     this.child = React.createRef();
@@ -28,6 +29,8 @@ class App extends React.Component {
     this.toggleFeedback = this.toggleFeedback.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.updateModalItem = this.updateModalItem.bind(this);
+    this.sendFeedback = this.sendFeedback.bind(this);
+    this.handleFeedback = this.handleFeedback.bind(this);
   }
 
   resetCarousel() {
@@ -85,6 +88,18 @@ class App extends React.Component {
       .catch((err) => err);
   }
 
+  sendFeedback() {
+    axios.post('http://localhost:3000/api/similar_products/feedback', this.state.feedback)
+      .then((res) => res)
+      .catch((err) => err);
+  }
+
+  handleFeedback(newFeedback) {
+    this.setState({
+      feedback: newFeedback,
+    }, () => { this.sendFeedback(); });
+  }
+
   componentDidMount() {
     this.getAllProducts();
   }
@@ -98,7 +113,8 @@ class App extends React.Component {
         getCurrentPage={this.getCurrentPage} ref={this.child}
         feedbackVisible={this.state.feedbackVisible} modalVisible={this.state.modalVisible}
         toggleModal={this.toggleModal} updateModalItem={this.updateModalItem}
-        modalItem={this.state.modalItem}/>
+        modalItem={this.state.modalItem} handleFeedback={this.handleFeedback}
+        toggleFeedback={this.toggleFeedback}/>
         <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
       </div>
 
