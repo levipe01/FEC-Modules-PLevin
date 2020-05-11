@@ -13,7 +13,7 @@ app.get('/api/similar_products', (req, res) => {
       res.status(200).json(data);
     })
     .catch((e) => {
-      res.status(200).json(e);
+      res.status(400).json(e);
     });
 });
 
@@ -25,7 +25,7 @@ app.post('/api/similar_products/feedback', (req, res) => {
       res.status(200).json(data);
     })
     .catch((e) => {
-      res.status(200).json(e);
+      res.status(400).json(e);
     });
 });
 

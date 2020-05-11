@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer.jsx';
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 
@@ -13,7 +14,11 @@ class App extends React.Component {
       currentPage: 1,
       totalPages: 0,
       products: [],
+      feedbackVisible: false,
+      modalVisible: false,
       itemsPerPage: 0,
+      modalItem: {},
+      feedback: {},
     };
 
     this.child = React.createRef();
@@ -21,6 +26,11 @@ class App extends React.Component {
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getTotalPages = this.getTotalPages.bind(this);
     this.getCurrentPage = this.getCurrentPage.bind(this);
+    this.toggleFeedback = this.toggleFeedback.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.updateModalItem = this.updateModalItem.bind(this);
+    this.sendFeedback = this.sendFeedback.bind(this);
+    this.handleFeedback = this.handleFeedback.bind(this);
   }
 
   resetCarousel() {
@@ -48,6 +58,26 @@ class App extends React.Component {
     });
   }
 
+  toggleFeedback() {
+    const newState = !this.state.feedbackVisible;
+    this.setState({
+      feedbackVisible: newState,
+    });
+  }
+
+  toggleModal() {
+    const newState = !this.state.modalVisible;
+    this.setState({
+      modalVisible: newState,
+    });
+  }
+
+  updateModalItem(item) {
+    this.setState({
+      modalItem: item,
+    });
+  }
+
   getAllProducts() {
     axios.get('http://localhost:3000/api/similar_products')
       .then((response) => {
@@ -56,6 +86,18 @@ class App extends React.Component {
         });
       })
       .catch((err) => err);
+  }
+
+  sendFeedback() {
+    axios.post('http://localhost:3000/api/similar_products/feedback', this.state.feedback)
+      .then((res) => res)
+      .catch((err) => err);
+  }
+
+  handleFeedback(newFeedback) {
+    this.setState({
+      feedback: newFeedback,
+    }, () => { this.sendFeedback(); });
   }
 
   componentDidMount() {
@@ -68,7 +110,12 @@ class App extends React.Component {
         <Header currentPage={this.state.currentPage}
         resetCarousel={this.resetCarousel} totalPages={this.state.totalPages}/>
         <Gallery products={this.state.products} getTotalPages={this.getTotalPages}
-        getCurrentPage={this.getCurrentPage} ref={this.child}/>
+        getCurrentPage={this.getCurrentPage} ref={this.child}
+        feedbackVisible={this.state.feedbackVisible} modalVisible={this.state.modalVisible}
+        toggleModal={this.toggleModal} updateModalItem={this.updateModalItem}
+        modalItem={this.state.modalItem} handleFeedback={this.handleFeedback}
+        toggleFeedback={this.toggleFeedback}/>
+        <Footer toggleFeedback={this.toggleFeedback} feedbackVisible={this.state.feedbackVisible}/>
       </div>
 
     );
