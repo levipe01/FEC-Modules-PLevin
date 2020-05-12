@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 
 const GalleryItem = ({
-  item, feedbackVisible, toggleModal, products, updateModalItem,
+  item,
+  feedbackVisible,
+  toggleModal,
+  products,
+  updateModalItem,
 }) => {
   const handleClick = (event) => {
     toggleModal();
@@ -19,7 +23,7 @@ const GalleryItem = ({
               <div className="carousel-feedback" id={item.id}>Feedback</div>
               <div className="carousel-feedback-img" id={item.id}></div>
             </div>
-          : <div></div>
+          : <></>
       }
       <img src={item.image_url}/>
       <a href={item.product_url}>{item.name}</a>
@@ -28,29 +32,33 @@ const GalleryItem = ({
         {
           item.is_prime
             ? <div className="prime_logo"></div>
-            : <div></div>
+            : <></>
         }
       </div>
     </div>
   );
 };
 
-
 GalleryItem.propTypes = {
   item: PropTypes.shape({
-    image_url: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    product_url: PropTypes.string,
-    is_prime: PropTypes.bool,
-    price: PropTypes.string,
+    image_url: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    product_url: PropTypes.string.isRequired,
+    is_prime: PropTypes.bool.isRequired,
+    price: PropTypes.string.isRequired,
   }),
-  feedbackVisible: PropTypes.bool,
-  toggleModal: PropTypes.func,
+  feedbackVisible: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({
     image_url: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    product_url: PropTypes.string.isRequired,
+    is_prime: PropTypes.bool.isRequired,
+    price: PropTypes.string.isRequired,
   })).isRequired,
-  updateModalItem: PropTypes.func,
+  updateModalItem: PropTypes.func.isRequired,
 };
 
 export default GalleryItem;

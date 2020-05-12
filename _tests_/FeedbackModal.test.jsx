@@ -16,7 +16,10 @@ describe('Modal Unit Tests', () => {
 
   test('should render the FeedbackModal Component', () => {
     const wrapper = shallow(<FeedbackModal
-      modalItem={sampleProduct}/>);
+      modalItem={sampleProduct}
+      toggleModal={() => {}}
+      toggleFeedback={() => {}}
+    />);
     expect(wrapper).toExist();
   });
 
@@ -26,6 +29,7 @@ describe('Modal Unit Tests', () => {
       <FeedbackModal
         modalItem={sampleProduct}
         toggleModal={mockToggleModal}
+        toggleFeedback={() => {}}
       />,
     );
     const updateButton = wrapper.find('.fb-modal-cancel');
@@ -33,19 +37,19 @@ describe('Modal Unit Tests', () => {
     expect(mockToggleModal).toHaveBeenCalled();
   });
 
-  test('should invoke the handleFeedback prop when the submit button is clicked', () => {
-    const mockHandleFeedback = jest.fn();
+  test('should invoke the sendFeedback method when the submit button is clicked', () => {
+    const mockSendFeedback = jest.fn();
     const wrapper = shallow(
       <FeedbackModal
         modalItem={sampleProduct}
-        handleFeedback={mockHandleFeedback}
         toggleModal={() => {}}
         toggleFeedback={() => {}}
       />,
     );
+    wrapper.instance().sendFeedback = mockSendFeedback;
     const updateButton = wrapper.find('.fb-modal-send');
     updateButton.simulate('click');
-    expect(mockHandleFeedback).toHaveBeenCalled();
+    expect(mockSendFeedback).toHaveBeenCalled();
   });
 
   test('should render the correct modalItem details', () => {

@@ -18,9 +18,9 @@ const Header = ({ totalPages, resetCarousel, currentPage }) => (
 );
 
 Header.propTypes = {
-  currentPage: PropTypes.number,
-  resetCarousel: PropTypes.func,
-  totalPages: PropTypes.number,
+  currentPage: PropTypes.number.isRequired,
+  resetCarousel: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired,
 };
 
 export default Header;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const axios = require('axios').default;
+
 
 class FeedbackModal extends React.Component {
   constructor(props) {
@@ -8,18 +10,24 @@ class FeedbackModal extends React.Component {
 
     this.state = {
       prod_id: 0,
-      user_name: '',
       type_id: 0,
+      user_name: '',
       comments: '',
     };
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.sendFeedback = this.sendFeedback.bind(this);
+  }
+
+  sendFeedback() {
+    axios.post('http://localhost:3000/api/similar_products/feedback', this.state)
+      .then((res) => res)
+      .catch((err) => err);
   }
 
   handleSubmit() {
-    this.props.handleFeedback(this.state);
+    this.sendFeedback();
     this.props.toggleModal();
     this.props.toggleFeedback();
   }
@@ -28,13 +36,6 @@ class FeedbackModal extends React.Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-    });
-  }
-
-  handleUpdate(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: Number(value),
     });
   }
 
@@ -52,6 +53,7 @@ class FeedbackModal extends React.Component {
           <div className="fb-modal-header">
             <h4 className="fb-modal-bold">Share your feedback</h4>
           </div>
+
           <div className="fb-modal-main">
             <img src={this.props.modalItem.image_url} className="fb-modal-image"/>
             <div className="fb-modal-name">{this.props.modalItem.name}</div>
@@ -60,15 +62,16 @@ class FeedbackModal extends React.Component {
 
           <form className="fb-modal-type" action="/action_page.php">
             <p className="fb-modal-bold">This item is:</p>
-            <input type="radio" name="type_id" value="1" onClick={this.handleUpdate}></input>
+            <input type="radio" name="type_id" value="1" onClick={this.handleInput}></input>
             <label htmlFor="Unrelated"> Unrelated to what I&apos;m shopping for</label><br></br>
-            <input type="radio" name="type_id" value="2" onClick={this.handleUpdate}></input>
+            <input type="radio" name="type_id" value="2" onClick={this.handleInput}></input>
             <label htmlFor="Inappropriate"> Inappropriate or offensive</label><br></br>
-            <input type="radio" name="type_id" value="3" onClick={this.handleUpdate}></input>
+            <input type="radio" name="type_id" value="3" onClick={this.handleInput}></input>
             <label htmlFor="other"> Other</label>
           </form>
+
           <form className="fb-modal-comments" action="/action_page.php">
-            <label className="fb-modal-bold" htmlFor="fname">Comments</label><br></br>
+            <label className="fb-modal-bold">Comments</label><br></br>
             <textarea type="text" name="comments" className="fb-modal-textarea" onChange={this.handleInput} placeholder="Include additional details here"></textarea>
           </form>
 
@@ -85,8 +88,7 @@ class FeedbackModal extends React.Component {
 }
 
 FeedbackModal.propTypes = {
-  modalVisible: PropTypes.bool,
-  toggleModal: PropTypes.func,
+  toggleModal: PropTypes.func.isRequired,
   modalItem: PropTypes.shape({
     image_url: PropTypes.string,
     id: PropTypes.string,
@@ -94,9 +96,8 @@ FeedbackModal.propTypes = {
     product_url: PropTypes.string,
     is_prime: PropTypes.bool,
     price: PropTypes.string,
-  }),
-  handleFeedback: PropTypes.func,
-  toggleFeedback: PropTypes.func,
+  }).isRequired,
+  toggleFeedback: PropTypes.func.isRequired,
 };
 
 
