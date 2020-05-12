@@ -18,7 +18,10 @@ describe('GalleryItem Unit Tests', () => {
     const wrapper = shallow(
       <GalleryItem
         item={sampleProduct}
-        products={[]}
+        products={[sampleProduct]}
+        toggleModal={() => {}}
+        updateModalItem={() => {}}
+        feedbackVisible={true}
       />,
     );
     expect(wrapper.find({ className: 'price' }).text()).toBe('$278.00');
@@ -31,7 +34,7 @@ describe('GalleryItem Unit Tests', () => {
     const wrapper = shallow(
       <GalleryItem
         item={sampleProduct}
-        products={[]}
+        products={[sampleProduct]}
         toggleModal={mockToggleModal}
         updateModalItem={mockUpdateModalItem}
         feedbackVisible={true}

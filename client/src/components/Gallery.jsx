@@ -9,6 +9,11 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      modalVisible: false,
+      modalItem: {},
+    };
+
     this.breakPoints = [
       { width: 1, itemsToShow: 1, itemsToScroll: 1 },
       { width: 200, itemsToShow: 2, itemsToScroll: 2 },
@@ -20,18 +25,12 @@ class Gallery extends React.Component {
       { width: 1400, itemsToShow: 8, itemsToScroll: 8 },
       { width: 1600, itemsToShow: 9, itemsToScroll: 9 },
     ];
-    this.buttonLeft = 'button-left';
-    this.buttonRight = 'button-right';
 
-    this.myArrow = this.myArrow.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleResize = this.handleResize.bind(this);
     this.goto = this.goto.bind(this);
-  }
-
-  myArrow({ type, onClick }) {
-    const pointer = type === consts.PREV ? this.buttonLeft : this.buttonRight;
-    return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.updateModalItem = this.updateModalItem.bind(this);
   }
 
   handleResize(currentBreakPoint) { this.props.getTotalPages(currentBreakPoint.itemsToShow); }
@@ -40,25 +39,41 @@ class Gallery extends React.Component {
 
   goto() { this.carousel.goTo(Number(0)); }
 
+  toggleModal() {
+    const newState = !this.state.modalVisible;
+    this.setState({
+      modalVisible: newState,
+    });
+  }
+
+  updateModalItem(item) {
+    this.setState({
+      modalItem: item,
+    });
+  }
+
   render() {
+    const myArrow = ({ type, onClick }) => {
+      const pointer = type === consts.PREV ? 'button-left' : 'button-right';
+      return (<button className="carousel_button" onClick={onClick}><div className={pointer}></div></button>);
+    };
+
     return (
       <div className="gallery-wrapper">
       {
-        this.props.modalVisible
-          ? <FeedbackModal toggleModal={this.props.toggleModal}
-          modalItem={this.props.modalItem} handleFeedback={this.props.handleFeedback}
+        this.state.modalVisible
+          ? <FeedbackModal toggleModal={this.toggleModal} modalItem={this.state.modalItem}
           toggleFeedback={this.props.toggleFeedback}/>
           : <></>
       }
-        <Carousel itemsToScroll={8} itemsToShow={8} pagination={false} transitionMs={900}
-          renderArrow={this.myArrow} breakPoints={this.breakPoints} onResize={this.handleResize}
-          onNextStart={this.handleNext} onPrevStart={this.handleNext}
-          ref={(ref) => { this.carousel = ref; }}>
+        <Carousel itemsToShow={8} ref={(ref) => { this.carousel = ref; }} renderArrow={myArrow}
+           breakPoints={this.breakPoints} onResize={this.handleResize} onNextStart={this.handleNext}
+           transitionMs={900} itemsToScroll={8} onPrevStart={this.handleNext} pagination={false}>
 
-          {this.props.products.map((item) => <GalleryItem key={item.id} item={item}
-          feedbackVisible={this.props.feedbackVisible} modalVisible={this.props.modalVisible}
-          products={this.props.products} toggleModal={this.props.toggleModal}
-          updateModalItem={this.props.updateModalItem}/>)}
+          {this.props.products.map((item) => <GalleryItem item={item} toggleModal={this.toggleModal}
+          feedbackVisible={this.props.feedbackVisible} modalVisible={this.state.modalVisible}
+          products={this.props.products} key={item.id} updateModalItem={this.updateModalItem}/>)}
+
         </Carousel>
       </div>
     );
@@ -68,25 +83,18 @@ class Gallery extends React.Component {
 Gallery.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     image_url: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    product_url: PropTypes.string.isRequired,
+    is_prime: PropTypes.bool.isRequired,
+    price: PropTypes.string.isRequired,
   })).isRequired,
   type: PropTypes.func,
   onClick: PropTypes.func,
-  feedbackVisible: PropTypes.bool,
-  getTotalPages: PropTypes.func,
-  getCurrentPage: PropTypes.func,
-  modalVisible: PropTypes.bool,
-  toggleModal: PropTypes.func,
-  modalItem: PropTypes.shape({
-    image_url: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    product_url: PropTypes.string,
-    is_prime: PropTypes.bool,
-    price: PropTypes.string,
-  }),
-  updateModalItem: PropTypes.func,
-  handleFeedback: PropTypes.func,
-  toggleFeedback: PropTypes.func,
+  feedbackVisible: PropTypes.bool.isRequired,
+  getTotalPages: PropTypes.func.isRequired,
+  getCurrentPage: PropTypes.func.isRequired,
+  toggleFeedback: PropTypes.func.isRequired,
 };
 
 export default Gallery;

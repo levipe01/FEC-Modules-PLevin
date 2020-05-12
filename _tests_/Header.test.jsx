@@ -6,7 +6,11 @@ import Header from '../client/src/components/Header.jsx';
 
 describe('Header Render Tests', () => {
   test('should render the Header component on the screen', () => {
-    const wrapper = shallow(<Header />);
+    const wrapper = shallow(<Header
+      currentPage={2}
+      resetCarousel={() => {}}
+      totalPages={10}
+    />);
     expect(wrapper).toExist();
   });
 });
