@@ -24,7 +24,7 @@ const GalleryItem = ({
               <div className="carousel-feedback-img" id={item.id}></div>
             </div>
       }
-      <img src={item.image_url}/>
+      <img className="carousel-img" src={item.image_url}/>
       <a href={item.product_url}>{item.name}</a>
       <div>
         <div className="price">${item.price}</div>
