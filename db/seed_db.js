@@ -41,6 +41,13 @@ function generateRandomFeedback(entries) {
   return [randomFeedbackType, randomFeebackComments, randomProductId, randomUser];
 }
 
+function generateRandomRating(entries) {
+  const randomRating = Math.floor((Math.random() * 5) + 1);
+  const randomProductId = Math.floor((Math.random() * entries) + 1000);
+
+  return [randomRating, randomProductId];
+}
+
 function seedProducts(entries) {
   const output = [];
   const query = 'INSERT INTO products(name, product_url, image_url, is_prime, price) VALUES($1, $2, $3, $4, $5)';
@@ -61,11 +68,28 @@ function seedFeedback(entries) {
   return Promise.all(output);
 }
 
+function seedRatings(entries) {
+  const output = [];
+  const query = 'INSERT INTO ratings(rating, prod_id) VALUES($1, $2)';
+  for (let i = 0; i < entries * 1000; i += 1) {
+    const values = generateRandomRating(entries);
+    output.push(db.query(query, values));
+  }
+  return Promise.all(output);
+}
+
 function createAndSeedFeedback(entries) {
   const createTableQuery = 'CREATE TABLE feedback(id BIGSERIAL PRIMARY KEY,type_id INTEGER,comments VARCHAR(1000),prod_id INTEGER,user_name VARCHAR(50), FOREIGN KEY (prod_id) REFERENCES products (id));';
   return db.query('DROP TABLE IF EXISTS feedback')
     .then(() => db.query(createTableQuery))
     .then(() => seedFeedback(entries));
+}
+
+function createAndSeedRatings(entries) {
+  const createTableQuery = 'CREATE TABLE ratings(id BIGSERIAL PRIMARY KEY,rating DECIMAL NOT NULL,prod_id INTEGER,FOREIGN KEY (prod_id) REFERENCES products (id));';
+  return db.query('DROP TABLE IF EXISTS ratings')
+    .then(() => db.query(createTableQuery))
+    .then(() => seedRatings(entries));
 }
 
 function createAndSeedProducts(entries) {
@@ -81,5 +105,7 @@ getEntriesCount()
   .then((entries) => createAndSeedProducts(entries))
   .then(() => db.query('SELECT * FROM products'))
   .then((results) => createAndSeedFeedback(results.rows.length))
+  .then(() => db.query('SELECT * FROM products'))
+  .then((results) => createAndSeedRatings(results.rows.length))
   .finally(() => process.exit())
   .catch((e) => e);

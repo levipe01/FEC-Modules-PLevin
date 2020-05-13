@@ -463,11 +463,78 @@ textarea:focus {
   margin-right: 15px;
 }
 
+hr {
+  width: 100%;
+  background-color: transparent;
+  height: 1px;
+  border-width: 0;
+  line-height: 19px;
+  margin-top: 0;
+  margin-bottom: 14px;
+  border-top: 1px solid #CCC;
+}
+
 .fb-modal-send:focus {
   outline:0;
   border-color:#e77600;
   box-shadow:0 0 3px 2px rgba(228,121,17,.5);
 }
+
+.stars {
+  background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
+  background-size: 400px 900px;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  vertical-align: text-top;
+  width: 80px;
+  height: 18px;
+  list-style-type: none;
+  display: inline-block;
+  white-space: normal;
+  letter-spacing: normal;
+}
+.stars_5_0 {
+  background-position: -4px -368px;
+}
+
+.stars_4_5 {
+  background-position: -175px -368px;
+}
+
+.stars_4_0 {
+  background-position: -21px -368px;
+}
+
+.stars_3_5 {
+  background-position: -191px -368px;
+}
+
+.stars_3_0 {
+  background-position: -37px -368px;;
+}
+
+.stars_2_5 {
+  background-position: -207px -368px;
+}
+
+.stars_2_0 {
+  background-position: -52px -368px;
+}
+
+.stars_1_5 {
+  background-position: -223px -368px;;
+}
+
+.stars_1_0 {
+  background-position: -69px -368px;
+}
+
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-size: 13px;

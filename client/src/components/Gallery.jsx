@@ -62,9 +62,8 @@ class Gallery extends React.Component {
       <div className="gallery-wrapper">
       {
         this.state.modalVisible
-          ? <FeedbackModal toggleModal={this.toggleModal} modalItem={this.state.modalItem}
+          && <FeedbackModal toggleModal={this.toggleModal} modalItem={this.state.modalItem}
           toggleFeedback={this.props.toggleFeedback}/>
-          : <></>
       }
         <Carousel itemsToShow={8} ref={(ref) => { this.carousel = ref; }} renderArrow={myArrow}
            breakPoints={this.breakPoints} onResize={this.handleResize} onNextStart={this.handleNext}
