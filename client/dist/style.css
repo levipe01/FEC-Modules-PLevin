@@ -1,4 +1,4 @@
-.feedbackButton {
+#similar-products .feedbackButton {
   text-decoration: none;
   padding: 0 19px 2px 0;
   line-height: 11px;
@@ -12,7 +12,7 @@
   text-align: right;
 }
 
-.feedbackButton:hover {
+#similar-products .feedbackButton:hover {
   background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right -13px no-repeat;
   background-size: 15px;
   color:#c45500;
@@ -21,17 +21,17 @@
   cursor: pointer;
 }
 
-.feedbackWrapper {
+#similar-products .feedbackWrapper {
   float: right;
 }
 
-.header {
+#similar-products .header {
   margin-bottom: 20px;
   width: 100%;
   height: 27px;
 }
 
-.header-left {
+#similar-products .header-left {
   color: #C60!important;
   font-size: 16px!important;
   font-family: "Amazon Ember", verdana,arial,helvetica,sans-serif!important;
@@ -39,11 +39,11 @@
   margin-top: 0;
 }
 
-.header-right {
+#similar-products .header-right {
   float: right;
 }
 
-.page-nums {
+#similar-products .page-nums {
   color: black;
   font-size: 13px;
   text-rendering: optimizeLegibility;
@@ -53,11 +53,11 @@
   display: inline;
 }
 
-.start-over {
+#similar-products .start-over {
   display: inline;
 }
 
-.seperator {
+#similar-products .seperator {
   font-size: 13px!important;
   line-height: 19px!important;
   text-align: right!important;
@@ -71,7 +71,7 @@
   vertical-align: middle;
 }
 
-.so-button {
+#similar-products .so-button {
   text-decoration: none;
   color: #0066c0;
   cursor: pointer;
@@ -81,43 +81,43 @@
   display: inline;
 }
 
-.so-button:hover {
+#similar-products .so-button:hover {
   color:#c45500
 }
 
-body {
+#similar-products body {
   font-family: "Amazon Ember", Arial, Helvetica, sans-serif;
   background-color: white;
   padding: 14px 18px 18px;
   margin: 0 auto;
 }
 
-a {
+#similar-products a {
   font-family: "Amazon Ember", Arial, Helvetica, sans-serif;
   color: #0066c0;
   text-decoration: none;
 }
 
-a:hover {
+#similar-products a:hover {
   color:#c45500;
   outline:0;
   text-decoration: underline;
 }
 
-#app {
+#similar-products {
   width: 100%;
   margin: auto;
   text-align: center;
 }
 
-img {
+#similar-products .carousel-img {
   height: 160px;
   width: 160px;
   background: transparent url(https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif) no-repeat scroll center center;
 
 }
 
-.a-carousel-card {
+#similar-products .a-carousel-card {
   font-family: "Amazon Ember", Arial;
   font-size: 13px;
   line-height: 19px;
@@ -133,7 +133,7 @@ img {
   letter-spacing: normal
 }
 
-.price {
+#similar-products .price {
   color: #B12704;
   font-size: 17px;
   line-height: 1.255;
@@ -142,7 +142,7 @@ img {
   display: inline;
 }
 
-.prime_logo {
+#similar-products .prime_logo {
   background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-beacon_light_1x-addec3fd9da3908c382725310951d0252d2f72cd._V2_.png);
   background-color: white;
   background-position: left;
@@ -158,7 +158,7 @@ img {
   margin-left: 3px;
 }
 
-.carousel_button {
+#similar-products .carousel_button {
   background: #e7e9ec;
   border-radius: 3px;
   border-color: #ADB1B8 #A2A6AC #8D9096;
@@ -176,21 +176,21 @@ img {
   margin: 70px 0;
 }
 
-.carousel_button:focus {
+#similar-products .carousel_button:focus {
   outline:0;
   border-color:#e77600;
   box-shadow:0 0 3px 2px rgba(228,121,17,.5);
 }
 
-.carousel_button:active{
+#similar-products .carousel_button:active{
   border-color:#adb1b8 #a2a6ac #a2a6ac;
 }
 
-.a-button:hover{
+#similar-products .a-button:hover{
   border-color:#a2a6ac #979aa1 #82858a;
 }
 
-.button-left {
+#similar-products .button-left {
   background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
   -webkit-background-size: 400px 900px;
   background-size: 400px 900px;
@@ -202,7 +202,7 @@ img {
   margin-left: 11px;
 }
 
-.button-right {
+#similar-products .button-right {
   background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
   -webkit-background-size: 400px 900px;
   background-size: 400px 900px;
@@ -214,7 +214,7 @@ img {
   margin-left: 11px;
 }
 
-.carousel-feedback {
+#similar-products .carousel-feedback {
   position: absolute;
   text-decoration: none;
   padding: 0 19px 2px 2px;
@@ -228,7 +228,7 @@ img {
   width: auto;
 }
 
-.carousel-feedback-wrapper:hover > .carousel-feedback{
+#similar-products .carousel-feedback-wrapper:hover > .carousel-feedback{
   position: absolute;
   text-decoration: none;
   padding: 0 19px 2px 2px;
@@ -242,7 +242,7 @@ img {
   width: auto;
 }
 
-.carousel-feedback-img {
+#similar-products .carousel-feedback-img {
   background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right 0 no-repeat;
   background-size: 15px;
   text-decoration: none;
@@ -258,7 +258,7 @@ img {
   height: 12.5px;
 }
 
-.carousel-feedback-wrapper:hover > .carousel-feedback-img {
+#similar-products .carousel-feedback-wrapper:hover > .carousel-feedback-img {
   background: url(https://images-na.ssl-images-amazon.com/images/G/01/productAds/ad_feedback_icon_2Xsprite.png) right -13px no-repeat;
   background-size: 15px;
   text-decoration: none;
@@ -273,7 +273,7 @@ img {
   height: 25px;
 }
 
-.carousel-feedback-wrapper {
+#similar-products .carousel-feedback-wrapper {
   cursor: pointer;
   position: absolute;
   z-index: 10;
@@ -291,7 +291,9 @@ img {
   opacity: 75%;
 }
 
-.fb-modal {
+#similar-products .fb-modal {
+  font-family: "Amazon Ember", Arial;
+  font-size: 13px;
   z-index: 3;
   display: none;
   padding-top: 100px;
@@ -307,7 +309,7 @@ img {
   display: block;
 }
 
-.fb-modal-content {
+#similar-products .fb-modal-content {
   border: 1px solid;
   border-color: rgba(0,0,0,.75);
   box-shadow: 0 4px 6px rgba(0,0,0,.25);
@@ -319,19 +321,19 @@ img {
   width: 350px;
 }
 
-.fb-modal-bold {
+#similar-products .fb-modal-bold {
   font-weight: 700;
   font-size: 13px;
   margin-bottom: 10px;
 }
 
-h4 {
+#similar-products h4 {
   margin-left: 13px;
   margin-top: 0px;
   padding-top: 10px;
 }
 
-.fb-modal-header {
+#similar-products .fb-modal-header {
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid #cdcdcd;
   border-bottom-color: rgba(0,0,0,.2);
@@ -347,19 +349,19 @@ h4 {
   font-family: "Amazon Ember", Arial, sans-serif;
 }
 
-.fb-modal-main {
+#similar-products .fb-modal-main {
   padding-top: 20px;
   display: inline-block;
 }
 
-.fb-modal-name {
+#similar-products .fb-modal-name {
   font-family: "Amazon Ember", Arial, sans-serif;
   font-size: 13px;
   line-height: 19px;
   text-align: left;
 }
 
-.fb-modal-price {
+#similar-products .fb-modal-price {
   font-family: "Amazon Ember", Arial, sans-serif;
   font-size: 13px;
   line-height: 19px;
@@ -367,7 +369,7 @@ h4 {
   text-align: left;
 }
 
-.fb-modal-image {
+#similar-products .fb-modal-image {
   margin-left: 18px;
   margin-right: 18px;
   float: left;
@@ -375,7 +377,7 @@ h4 {
   width: 60px;
 }
 
-.fb-modal-footer {
+#similar-products .fb-modal-footer {
   border-radius: 4px 4px 0 0;
   border-top: 1px solid #cdcdcd;
   border-top-color: rgba(0,0,0,.2);
@@ -388,24 +390,24 @@ h4 {
   position: relative;
 }
 
-.fb-modal-buttons {
+#similar-products .fb-modal-buttons {
   float: right;
 }
 
-.fb-modal-type {
+#similar-products .fb-modal-type {
   font-size: 13px;
   text-align: left;
   padding: 0 18px 0 18px;
   margin-top: 40px;
 }
 
-.fb-modal-comments {
+#similar-products .fb-modal-comments {
   font-size: 13px;
   text-align: left;
   padding: 0 18px 0 18px;
 }
 
-textarea {
+#similar-products textarea {
   width: 312px;
   height: 70px;
   padding: 5px 7px 5px 7px;
@@ -414,13 +416,13 @@ textarea {
   font-size: 13;
 }
 
-textarea:focus {
+#similar-products textarea:focus {
   outline:0;
   border-color:#e77600;
   box-shadow:0 0 3px 2px rgba(228,121,17,.5);
 }
 
-.fb-modal-cancel {
+#similar-products .fb-modal-cancel {
   background: #e7e9ec;
   border-radius: 3px;
   border-color: #ADB1B8 #A2A6AC #8D9096;
@@ -438,13 +440,13 @@ textarea:focus {
   margin-right: 5px;
 }
 
-.fb-modal-cancel:focus {
+#similar-products .fb-modal-cancel:focus {
   outline:0;
   border-color:#e77600;
   box-shadow:0 0 3px 2px rgba(228,121,17,.5);
 }
 
-.fb-modal-send {
+#similar-products .fb-modal-send {
   border-radius: 3px;
   background: #f0c14b;
   border-color: #a88734 #9c7e31 #846a29;
@@ -463,7 +465,7 @@ textarea:focus {
   margin-right: 15px;
 }
 
-hr {
+#similar-products hr {
   width: 100%;
   background-color: transparent;
   height: 1px;
@@ -474,13 +476,13 @@ hr {
   border-top: 1px solid #CCC;
 }
 
-.fb-modal-send:focus {
+#similar-products .fb-modal-send:focus {
   outline:0;
   border-color:#e77600;
   box-shadow:0 0 3px 2px rgba(228,121,17,.5);
 }
 
-.stars {
+#similar-products .stars {
   background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
   background-size: 400px 900px;
   background-repeat: no-repeat;
@@ -499,42 +501,41 @@ hr {
   white-space: normal;
   letter-spacing: normal;
 }
-.stars_5_0 {
+#similar-products .stars_5_0 {
   background-position: -4px -368px;
 }
 
-.stars_4_5 {
+#similar-products .stars_4_5 {
   background-position: -175px -368px;
 }
 
-.stars_4_0 {
+#similar-products .stars_4_0 {
   background-position: -21px -368px;
 }
 
-.stars_3_5 {
+#similar-products .stars_3_5 {
   background-position: -191px -368px;
 }
 
-.stars_3_0 {
+#similar-products .stars_3_0 {
   background-position: -37px -368px;;
 }
 
-.stars_2_5 {
+#similar-products .stars_2_5 {
   background-position: -207px -368px;
 }
 
-.stars_2_0 {
+#similar-products .stars_2_0 {
   background-position: -52px -368px;
 }
 
-.stars_1_5 {
+#similar-products .stars_1_5 {
   background-position: -223px -368px;;
 }
 
-.stars_1_0 {
+#similar-products .stars_1_0 {
   background-position: -69px -368px;
 }
-
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-size: 13px;
