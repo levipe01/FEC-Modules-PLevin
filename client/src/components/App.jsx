@@ -75,6 +75,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <hr></hr>
         <Header currentPage={this.state.currentPage} resetCarousel={this.resetCarousel}
         totalPages={this.state.totalPages}/>
 

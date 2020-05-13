@@ -19,11 +19,10 @@ const GalleryItem = ({
     <div className="a-carousel-card" key={item.id}>
       {
         feedbackVisible
-          ? <div className="carousel-feedback-wrapper" id={item.id} onClick={handleClick}>
+          && <div className="carousel-feedback-wrapper" id={item.id} onClick={handleClick}>
               <div className="carousel-feedback" id={item.id}>Feedback</div>
               <div className="carousel-feedback-img" id={item.id}></div>
             </div>
-          : <></>
       }
       <img src={item.image_url}/>
       <a href={item.product_url}>{item.name}</a>
@@ -31,10 +30,10 @@ const GalleryItem = ({
         <div className="price">${item.price}</div>
         {
           item.is_prime
-            ? <div className="prime_logo"></div>
-            : <></>
+            && <div className="prime_logo"></div>
         }
       </div>
+      <div className={`stars stars_${String((Math.round(item.avg_rating * 2) / 2).toFixed(1)).replace('.', '_')}`}></div>
     </div>
   );
 };
@@ -47,6 +46,7 @@ GalleryItem.propTypes = {
     product_url: PropTypes.string.isRequired,
     is_prime: PropTypes.bool.isRequired,
     price: PropTypes.string.isRequired,
+    avg_rating: PropTypes.string.isRequired,
   }),
   feedbackVisible: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,

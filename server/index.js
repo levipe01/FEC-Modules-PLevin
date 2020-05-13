@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static('./client/dist'));
 
 app.get('/api/similar_products', (req, res) => {
-  db.query('SELECT * FROM products')
+  db.query('select * from products inner join (select prod_id, AVG(rating) as avg_rating from ratings group by prod_id) as temp on (products.id=temp.prod_id)')
     .then((data) => {
       res.status(200).json(data);
     })
