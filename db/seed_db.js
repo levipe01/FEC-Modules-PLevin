@@ -3,6 +3,7 @@ const readline = require('readline');
 const Promise = require('bluebird');
 const db = require('./index.js');
 
+
 function getEntriesCount() {
   return new Promise((resolve) => {
     const rl = readline.createInterface({
@@ -71,7 +72,7 @@ function seedFeedback(entries) {
 function seedRatings(entries) {
   const output = [];
   const query = 'INSERT INTO ratings(rating, prod_id) VALUES($1, $2)';
-  for (let i = 0; i < entries * 1000; i += 1) {
+  for (let i = 0; i < entries * 20; i += 1) {
     const values = generateRandomRating(entries);
     output.push(db.query(query, values));
   }
