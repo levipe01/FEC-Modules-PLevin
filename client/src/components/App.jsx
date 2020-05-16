@@ -59,7 +59,7 @@ class App extends React.Component {
   }
 
   getAllProducts() {
-    axios.get('http://localhost:3000/api/similar_products')
+    axios.get('/api/similar_products')
       .then((response) => {
         this.setState({
           products: response.data.rows,

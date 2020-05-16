@@ -21,7 +21,7 @@ class FeedbackModal extends React.Component {
   }
 
   sendFeedback() {
-    axios.post('http://localhost:3000/api/similar_products/feedback', this.state)
+    axios.post('/api/similar_products/feedback', this.state)
       .then((res) => res)
       .catch((err) => err);
   }
