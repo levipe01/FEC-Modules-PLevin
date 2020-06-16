@@ -10,7 +10,7 @@ A clone of an Amazon product page.
   - https://github.com/hrden04/agcModulesJOxner
 
 ## Getting Started
-Clone this repository from by running: git clone https://github.com/levipe01/Spot_A_Fly_Top_Tracks.git 
+Clone this repository from by running: git clone https://github.com/levipe01/Shop_Smart_Products_Carousel.git
 
 ## Prerequisites
 Node.js npm. 
