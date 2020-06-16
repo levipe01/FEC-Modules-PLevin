@@ -1,4 +1,4 @@
-# Spot-A-Fly - Top Tracks Microservice
+# Sho Smart - Similar Products Microservice
 A clone of an Amazon product page.
 
 ![](CloneAzonDemo.gif)
