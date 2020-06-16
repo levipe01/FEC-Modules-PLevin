@@ -1,6 +1,7 @@
-# Project Name
+# Spot-A-Fly - Top Tracks Microservice
+A clone of an Amazon product page.
 
-> Project description
+![](CloneAzonDemo.gif)
 
 ## Related Projects
 
@@ -8,34 +9,34 @@
   - https://github.com/hrden04/FEC-Modules-Mboss
   - https://github.com/hrden04/agcModulesJOxner
 
-## Table of Contents
+## Getting Started
+Clone this repository from by running: git clone https://github.com/levipe01/Spot_A_Fly_Top_Tracks.git 
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+## Prerequisites
+Node.js npm. 
+PostgreSQL
 
-## Usage
+## Installing
+Install all dependencies. Seed database. Run server.
 
-npm run react-dev
-npm run server-dev
-npm run seed-db
+npm run seed-db <br/>
+npm run start
 
-## Requirements
+Navigate to http://localhost:3000 to visit the Shop Smart similar products service. 
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+## Built With
+PostgreSQL <br/>
+Express.js <br/>
+React <br/>
+Node.js <br/>
+Jest
 
-- Node 6.13.0
-- etc
+## Authors
+Peter Levin - GitHub
 
-## Development
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-### Installing Dependencies
-
-From within the root directory:
-
-
-npm install -g webpack
-npm install
 
 
 
