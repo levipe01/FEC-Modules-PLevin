@@ -1,4 +1,4 @@
-# Sho Smart - Similar Products Microservice
+# Shop Smart - Similar Products Microservice
 A clone of an Amazon product page.
 
 ![](CloneAzonDemo.gif)
